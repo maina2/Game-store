@@ -37,6 +37,5 @@ export const getGameById = async(req,res) => {
         sql.close();
     }
 
-
-
 }
+
