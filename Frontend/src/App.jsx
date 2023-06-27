@@ -1,34 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Sidebar from './components/Sidebar'
 import './App.css'
+import { BrowserRouter,Routes, Route} from "react-router-dom";
+import Home from './pages/Home'
+import Store from './pages/Store';
+import Profile from './pages/Profile'
+import Gallery from './pages/Gallery'
+import Logout from './components/Logout'
+import Navbar from './components/Navbar';
+import { Context } from "./context/userContext/Context";
+import { useContext } from "react";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const {user } =useContext(Context);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='body'>
+
+     
+      <BrowserRouter>
+      <Navbar/>
+     
+      <div className="minor">
+        <div className='sidebar'>
+        <Sidebar/>
+        </div>
+        <div className="content">
+        <Routes>
+
+          <Route path="/"       element={<Home/>}/>
+          <Route path="/Store"       element={user ? <Store/> :<Home/>}/>
+          <Route path="/Profile"       element={ user ?<Profile/> :<Home/>}/>
+          <Route path="/Gallery"       element={user ?<Gallery/> :<Home/>}/>
+          <Route path="/Logout"       element={<Logout/> }/>
+
+        </Routes>
+        </div>
+      
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      
+      </BrowserRouter>
+
+    </div>
   )
 }
 
