@@ -5,17 +5,19 @@
 }
 
 .body{
-    height: 100vh;
+    overflow-y: auto;
     width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: #0c182cf2;
 
 }
+
 .minor{
-    height:90% ;
     display: flex;
     flex-direction: row;
+    padding-top: 20px;
 }
 
 .sidebar{

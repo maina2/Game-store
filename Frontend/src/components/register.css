@@ -27,21 +27,17 @@
 
 input{
     width: 80%;
-    height: 25px;
+    height: 35px;
     margin-bottom: 1rem;
-    /* border-top: 0px; */
+    border: none;
+    background-color:   #BCD2E8;
+    border-radius: 3px;
 }
 
 button{
     width: 80%;
-    height: 25px;
+    height: 30px;
     margin-bottom: 4rem;
     margin-top: 1rem;
-}
-button:hover{
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-    cursor: pointer;
 }
 

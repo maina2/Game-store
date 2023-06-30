@@ -1,22 +1,18 @@
-
 import { Context } from "../context/userContext/Context";
 import { useContext } from "react";
-
+import './profile.css';
 
 function Profile() {
-  const {user} =useContext(Context);
+  const { user } = useContext(Context);
 
   return (
-    <div>
-      <h3>Username</h3>
-      <p>{user.username}</p>
-      <h3>Email</h3>
-      <p>{user.email}</p>
-      
-
-
+    <div className="profile-container">
+      <h3 className="profile-heading">Username</h3>
+      <p className="profile-info">{user.username}</p>
+      <h3 className="profile-heading">Email</h3>
+      <p className="profile-info">{user.email}</p>
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;

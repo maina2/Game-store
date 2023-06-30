@@ -1,7 +1,7 @@
 
 import { register,login,loginRequired} from '../controllers/Authenticate.js'
-import  {getAllGames,getGameById} from '../controllers/Games.js'
-import {ordersPresent,deleteOrder} from '../controllers/Orders.js'
+import  {getAllGames,getGamesByGenre} from '../controllers/Games.js'
+import {addOrder,deleteOrder, getOrders} from '../controllers/Orders.js'
 import {deleteReview,updateReview} from '../controllers/Reviews.js'
 
 const routes = (app)=>{
@@ -12,17 +12,17 @@ const routes = (app)=>{
         .post(login)
     //Games routes
     app.route('/Games')
-        .get(loginRequired,getAllGames);
-    app.route('/Games/:id')
-        .get(loginRequired,getGameById)
+        .get(getAllGames);
+    app.route('/Games/:genreId')
+        .get(getGamesByGenre)
     //Order routes
     app.route('/Orders')
-        .get(loginRequired,ordersPresent);
+        .post(addOrder)
+        .get(getOrders)        
     app.route('/Orders/Delete/:id')
-    .get(loginRequired,deleteOrder)
+        .delete( deleteOrder);
     //Reviews routes
-    // app.route('/Reviews')
-    //     .get(ordersPresent);
+    
     app.route('/Reviews/Delete/:id')
         .get(loginRequired,deleteReview)
         .post(loginRequired,updateReview)

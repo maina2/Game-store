@@ -82,7 +82,6 @@ VALUES
   (3, 'Sports'),
   (4, 'Role Playig Games')
 
-  DELETE FROM Orders;
 
 
 INSERT INTO Orders (OrderID, UserName, GameID, Quantity, OrderDate)

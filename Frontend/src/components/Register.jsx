@@ -3,6 +3,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "./register.css";
 import Axios from "axios";
+import { Link } from 'react-router-dom'; 
+
 
 export default function Register() {
   const schema = yup.object().shape({
@@ -24,7 +26,6 @@ export default function Register() {
       .then((response) => {
         console.log(response);
         response.data.message && alert(response.data.message);
-        // navigate("/")
       })
       .catch(({ error }) => {
         console.log(error);
@@ -43,6 +44,9 @@ export default function Register() {
           <input type="email" placeholder="Email..." {...register("email")} />
           <p>{errors.email?.message}</p>
           <input className="submitBtn" type="submit" value="Register" />
+          <p>
+          Already have an account? <Link to="/">Sign in here</Link>
+          </p>
         </form>
       </div>
     </div>
